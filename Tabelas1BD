@@ -1,0 +1,53 @@
+CREATE TABLE TUTOR (
+    id_tutor serial,
+    nome_tutor character varying(50),
+    CPF_tutor character varying(14),
+    RG_tutor character varying(12),
+    datanasc_tutor date,
+    genero_tutor character varying(50),
+    tel_tutor character varying(14),
+    rua_tutor character varying(50),
+    num_tutor character varying(20),
+    cep_tutor character varying(9),
+    bairro_tutor character varying(20),
+    cidade_tutor character varying(50),
+    estado_tutor character varying(2), 
+    CONSTRAINT tutor_pkey PRIMARY KEY (id_tutor),
+    CONSTRAINT tutor_cpf_key UNIQUE (cpf_tutor)
+);
+
+CREATE TABLE ANIMAL (
+    id_animal serial,
+    nome_animal character varying(50),
+    especie_animal character varying(20),
+    sexo_animal character varying(1),
+    raca_animal character varying(30),
+    porte_animal character varying(30),
+    cor_animal character varying(30),
+    pelagem_animal character varying(30),
+    id_tutor integer,
+    CONSTRAINT animal_pkey PRIMARY KEY (id_animal),
+    CONSTRAINT tutor_fk FOREIGN KEY (id_tutor) REFERENCES tutor (id_tutor)
+);
+
+CREATE TABLE FUNCIONARIO (
+    id_funcionario serial,
+    user_funcionario character varying(50),
+    senha_funcionario character varying(50),
+    nome_funcionario character varying(50),
+    CPF_funcionario character varying(14),
+    RG_funcionario character varying(12),
+    datanasc_funcionario date,
+    genero_funcionario character varying(50),
+    tel_funcionario character varying(14),
+    rua_funcionario character varying(50),
+    num_funcionario character varying(20),
+    cep_funcionario character varying(9),
+    bairro_funcionario character varying(50),
+    cidade_funcionario character varying(50),
+    estado_funcionario character varying(2),
+    tipo_funcionario character varying(20),
+    CONSTRAINT funcionario_pkey PRIMARY KEY (id_funcionario),
+    CONSTRAINT funcionario_cpf_key UNIQUE (cpf_funcionario),
+    CONSTRAINT funcionario_user_key UNIQUE (user_funcionario)
+);
