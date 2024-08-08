@@ -1,0 +1,18 @@
+CREATE TABLE SERVICO (
+    id_servico serial,
+    tipo_servico character varying(50),
+    valor_servico double precision,
+    id_funcionario integer,
+    CONSTRAINT servico_pkey PRIMARY KEY (id_servico),
+    CONSTRAINT servico_fkey FOREIGN KEY (id_funcionario) REFERENCES funcionario(id_funcionario)
+    
+);
+
+CREATE TABLE SERVICO_ANIMAL (
+    id_servico integer,
+    id_animal integer,
+    valor_servico double precision,
+    data_servico date,
+    CONSTRAINT servico_animal_id_animal_fkey FOREIGN KEY (id_animal) REFERENCES ANIMAL,
+    CONSTRAINT servico_animal_id_servico_fkey FOREIGN KEY (id_servico) REFERENCES SERVICO
+);
